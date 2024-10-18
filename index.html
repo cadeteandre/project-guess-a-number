@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+      #app {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .rounds {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+      .formRounds {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      #inputGuess {
+        width: 160px;
+      }
+      .yellowLink {
+        color: yellow;
+        text-decoration: none;
+      }
+      .victory {
+        color: chartreuse;
+      }
+    </style>
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Guess a number between 1 and 100</h1>
+      <section>
+        <p>in how many rounds you think you can guess the number?</p>
+        <div class="rounds">
+          <form onsubmit="return false" class="formRounds">
+            <label>
+              <input type="radio" id="num4" value="4" class="roundsAmount">4
+            </label>
+            <label>
+              <input type="radio" id="num5" value="5" class="roundsAmount">5
+            </label>
+            <label>
+              <input type="radio" id="num6" value="6" class="roundsAmount">6
+            </label>
+            <label>
+              <input type="radio" id="custom" value="custom" class="roundsAmount">Custom
+            </label>
+          </form>
+        </div>
+      </section>
+      <section>
+        <form onsubmit="return false">
+          <input type="number" id="inputGuess" min="1" max="100">
+          <button type="button">guess</button>
+        </form>
+      </section>
+      <section id="showResults"></section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
