@@ -24,36 +24,37 @@ const howManyRounds = (e: Event) => {
     const userGuess: number = Number(inputGuess.value);
     const result = document.createElement('p') as HTMLParagraphElement;
 
-    if(counter < roundsAmount) {
-      switch(true) {
-        case (userGuess > 100):
-          result.textContent =  `${counter} - You need to guess a number between 1 and 100`;
-          roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-          showResults.appendChild(result);
-          break;
-        case (userGuess < randomNum):
-          result.textContent = `${counter} - You need to guess higher than ${userGuess}. Try again...`;
-          roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-          showResults.appendChild(result);
-          break;
-        case (userGuess > randomNum):
-          result.textContent = `${counter} - You need to guess lower than ${userGuess}. Try again...`;
-          roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-          showResults.appendChild(result);
-          break;
-        case (userGuess === randomNum):
-          showResults.innerHTML = `<span class="victory">Congratulations!!</span> The number is ${randomNum}`
-          break;
-      };
-    } else {
+    if(userGuess === randomNum) {
+      showResults.innerHTML = `<span class="victory">Congratulations!!</span> The number is ${randomNum}`
       roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-      showResults.innerHTML = `
-        <p>You are out of moves :/</p>
-        <a class="yellowLink" href="index.html">Try again</a>
-      `;
-    }
+    } else if(counter < roundsAmount) {
+        switch(true) {
+          case (userGuess > 100):
+              result.textContent =  `${counter} - You need to guess a number between 1 and 100`;
+              roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+              showResults.appendChild(result);
+            break;
+          case (userGuess < randomNum):
+            result.textContent = `${counter} - You need to guess higher than ${userGuess}. Try again...`;
+            roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+            showResults.appendChild(result);
+            break;
+          case (userGuess > randomNum):
+            result.textContent = `${counter} - You need to guess lower than ${userGuess}. Try again...`;
+            roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+            showResults.appendChild(result);
+            break;
+        };
+      } else {
+        roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+        showResults.innerHTML = `
+          <p>You are out of moves :/</p>
+          <a class="yellowLink" href="index.html">Try again</a>
+        `;
+      }
     inputGuess.value = '';
     counter++;
+    console.log(randomNum);
   });
 };
 
