@@ -42,36 +42,80 @@ const guessANumber = () => {
       roundsAmount = Number(roundOptions[3].value);
       break;
   }
-  // * user guess check and show results
+
+
+
+// ? Wagner safadinho
+
   if(userGuess === randomNum) {
     showResults.innerHTML = `<span class="victory">Congratulations!!</span> The number is ${randomNum}`
     roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-  } else if(counter < roundsAmount) {
-      switch(true) {
-        case (userGuess > 100):
-            result.textContent =  `${counter} - You need to guess a number between 1 and 100`;
-            roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-            showResults.appendChild(result);
-          break;
-        case (userGuess < randomNum):
-          result.textContent = `${counter} - You need to guess higher than ${userGuess}. Try again...`;
-          roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-          showResults.appendChild(result);
-          break;
-        case (userGuess > randomNum):
-          result.textContent = `${counter} - You need to guess lower than ${userGuess}. Try again...`;
-          roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-          showResults.appendChild(result);
-          break;
-      };
-    } else {
+    return; 
+  };
+  
+  if(counter === roundsAmount) {
+    roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+    showResults.innerHTML = `
+      <p>You are out of moves :/</p>
+      <p>The number was ${randomNum}</p>
+      <a class="yellowLink" href="index.html">Try again</a>
+    `;
+    return;
+  };
+
+  switch(true) {
+    case (userGuess > 100):
+        result.textContent =  `${counter} - You need to guess a number between 1 and 100`;
+        roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+        showResults.appendChild(result);
+      break;
+    case (userGuess < randomNum):
+      result.textContent = `${counter} - You need to guess higher than ${userGuess}. Try again...`;
       roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-      showResults.innerHTML = `
-        <p>You are out of moves :/</p>
-        <p>The number was ${randomNum}</p>
-        <a class="yellowLink" href="index.html">Try again</a>
-      `;
-    };
+      showResults.appendChild(result);
+      break;
+    case (userGuess > randomNum):
+      result.textContent = `${counter} - You need to guess lower than ${userGuess}. Try again...`;
+      roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+      showResults.appendChild(result);
+      break;
+  };
+
+
+
+
+
+
+  // * user guess check and show results
+  // if(userGuess === randomNum) {
+  //   showResults.innerHTML = `<span class="victory">Congratulations!!</span> The number is ${randomNum}`
+  //   roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+  // } else if(counter < roundsAmount) {
+  //     switch(true) {
+  //       case (userGuess > 100):
+  //           result.textContent =  `${counter} - You need to guess a number between 1 and 100`;
+  //           roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+  //           showResults.appendChild(result);
+  //         break;
+  //       case (userGuess < randomNum):
+  //         result.textContent = `${counter} - You need to guess higher than ${userGuess}. Try again...`;
+  //         roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+  //         showResults.appendChild(result);
+  //         break;
+  //       case (userGuess > randomNum):
+  //         result.textContent = `${counter} - You need to guess lower than ${userGuess}. Try again...`;
+  //         roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+  //         showResults.appendChild(result);
+  //         break;
+  //     };
+  //   } else {
+  //     roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
+  //     showResults.innerHTML = `
+  //       <p>You are out of moves :/</p>
+  //       <p>The number was ${randomNum}</p>
+  //       <a class="yellowLink" href="index.html">Try again</a>
+  //     `;
+  //   };
   inputGuess.value = '';
   counter++;
 };
