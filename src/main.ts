@@ -10,7 +10,7 @@ const randomNum: number = Math.floor(Math.random() * 100) +1;
 let roundsAmount: number = 0;
 let counter: number = 1;
 
-roundOptions[3].addEventListener('click', () => {
+roundOptions[3]. addEventListener('click', () => {
   const inputCustom = document.createElement('input') as HTMLInputElement;
   inputCustom.setAttribute('type', 'number');
   inputCustom.classList.add('customRounds');
@@ -43,16 +43,12 @@ const guessANumber = () => {
       break;
   }
 
-
-
-// ? Wagner safadinho
-
   if(userGuess === randomNum) {
     showResults.innerHTML = `<span class="victory">Congratulations!!</span> The number is ${randomNum}`
     roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
     return; 
   };
-  
+
   if(counter === roundsAmount) {
     roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
     showResults.innerHTML = `
@@ -81,41 +77,6 @@ const guessANumber = () => {
       break;
   };
 
-
-
-
-
-
-  // * user guess check and show results
-  // if(userGuess === randomNum) {
-  //   showResults.innerHTML = `<span class="victory">Congratulations!!</span> The number is ${randomNum}`
-  //   roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-  // } else if(counter < roundsAmount) {
-  //     switch(true) {
-  //       case (userGuess > 100):
-  //           result.textContent =  `${counter} - You need to guess a number between 1 and 100`;
-  //           roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-  //           showResults.appendChild(result);
-  //         break;
-  //       case (userGuess < randomNum):
-  //         result.textContent = `${counter} - You need to guess higher than ${userGuess}. Try again...`;
-  //         roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-  //         showResults.appendChild(result);
-  //         break;
-  //       case (userGuess > randomNum):
-  //         result.textContent = `${counter} - You need to guess lower than ${userGuess}. Try again...`;
-  //         roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-  //         showResults.appendChild(result);
-  //         break;
-  //     };
-  //   } else {
-  //     roundsContainer.innerHTML = `${counter} / ${roundsAmount}`;
-  //     showResults.innerHTML = `
-  //       <p>You are out of moves :/</p>
-  //       <p>The number was ${randomNum}</p>
-  //       <a class="yellowLink" href="index.html">Try again</a>
-  //     `;
-  //   };
   inputGuess.value = '';
   counter++;
 };
